@@ -1,0 +1,10 @@
+{
+    "env": {
+        "MYSQL_USER": "root",
+        "MYSQL_PASSWORD": "maycon123",
+        "MYSQL_DATABASE": "scheduling",
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": 3306
+    }
+}
+
