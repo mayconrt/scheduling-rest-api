@@ -1,10 +1,12 @@
 {
     "env": {
+        "MYSQL_CLIENT": "mysql",
         "MYSQL_USER": "root",
         "MYSQL_PASSWORD": "maycon123",
         "MYSQL_DATABASE": "scheduling",
         "MYSQL_HOST": "localhost",
-        "MYSQL_PORT": 3306
+        "MYSQL_PORT": 3306,
+        "CLEARDB_DATABASE_URL": "mysql://bf868737566ef5:557e3fec@us-cdbr-east-02.cleardb.com/heroku_2578a9e036304ad?reconnect=true"
     }
 }
 

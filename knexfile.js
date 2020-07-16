@@ -1,5 +1,7 @@
 // Update with your config settings.
 
+const { eventNames } = require("./src/database/conection");
+
 module.exports = {
 
   // development: {
@@ -37,7 +39,7 @@ module.exports = {
 
   development: {
     client: 'mysql',
-    connection: 'mysql://bf868737566ef5:557e3fec@us-cdbr-east-02.cleardb.com/heroku_2578a9e036304ad?reconnect=true',
+    connection: process.env.CLEARDB_DATABASE_URL,
     pool: {
       min: 2,
       max: 10
