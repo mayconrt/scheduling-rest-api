@@ -5,13 +5,23 @@ const bodyParser = require('body-parser')
 
 const professional = require('./routes/professional')
 const services = require('./routes/services')
+const authenticate = require('./routes/auth')
+const user = require('./routes/user')
+const userxservices = require('./routes/userxservices')
+const places = require('./routes/place')
+const { route } = require('./routes/professional')
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.use('/authenticate', authenticate)
+app.use('/user', user)
 app.use('/professional', professional)
 app.use('/services', services)
+app.use('/userxservices', userxservices)
+app.use('/places', places)
+
 
 app.use((req, res, next) => {
     res.header('Acess-Control-Allow-Origin', '*') // Configurar para permitir apenas o servidor de prod

@@ -1,4 +1,3 @@
-
 const connection = require('../database/conection')
 
 module.exports = {
@@ -6,8 +5,18 @@ module.exports = {
     async index(request, response) {
 
         try {
-            const services = await connection('services').select('*')
-            return response.status(200).json(services)
+            const { id } = request.params
+
+            const services = await connection('userxservices')
+                .where({ idUser: id })
+                .select('*')
+
+            if (services.length > 0) {
+                return response.status(200).json(services)
+            } else {
+                return response.status(404).json({ error: 'Nenhum serviço encontrado.' })
+            }
+
         } catch (error) {
             return response.status(500).json({
                 error: error.message
@@ -17,22 +26,26 @@ module.exports = {
 
     async create(request, response) {
         try {
-            const { name, duration, value, description } = request.body
+            const { idUser, idServices } = request.body
 
-            const service = await connection('services').insert({
-                name,
-                duration,
-                value,
-                description
-            })
+            await idServices.forEach(async idServices => {
 
-            if (service) {
-                return response.status(201).json({
-                    message: 'Serviço incluído com sucesso.'
+                const services = await connection('userxservices').insert({
+                    idUser,
+                    idServices
+                }).then(res => {
+                    return response.status(200).json('Serviços incluídos com sucesso.')
+                }).catch(err => {
+                    let message
+                    if(err.code && err.code == '23503'){
+                        message = 'Constraint error'
+                    }else{
+                        message = 'Erro ao tentar inserir serviço x usuário'
+                    }
+                    return response.status(500).json({ error: message })
                 })
-            } else {
-                return response.status(400).json({ error: error })
-            }
+
+            })
 
         } catch (error) {
             return response.status(500).json({ error: error.message })

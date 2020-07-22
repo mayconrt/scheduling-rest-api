@@ -1,25 +1,22 @@
 // Update with your config settings.
-
-const { eventNames } = require("./src/database/conection");
-
 module.exports = {
 
-  // development: {
-  //   client: 'postgresql',
-  //   connection: {
-  //     database: 'scheduling',
-  //     user: 'postgres',
-  //     password: 'maycon123'
-  //   },
-  //   pool: {
-  //     min: 2,
-  //     max: 10
-  //   },
-  //   migrations: {
-  //     directory: "./src/database/migrations"
-  //   },
-  //   useNullAsDefault: true,
-  // },
+  development: {
+    client: "postgres",
+    connection: {
+      database: 'scheduling',
+      user: 'postgres',
+      password: 'maycon123'
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      directory: "./src/database/migrations"
+    },
+    useNullAsDefault: true,
+  }
 
   // staging: {
   //   client: 'postgresql',
@@ -37,17 +34,17 @@ module.exports = {
   //   }
   // },
 
-  development: {
-    client: 'mysql',
-    connection: process.env.CLEARDB_DATABASE_URL,
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      directory: "./src/database/migrations"
-    },
-    useNullAsDefault: true,
-  }
+//   development: {
+//     client: 'mysql',
+//     connection: process.env.CLEARDB_DATABASE_URL,
+//     pool: {
+//       min: 2,
+//       max: 10
+//     },
+//     migrations: {
+//       directory: "./src/database/migrations"
+//     },
+//     useNullAsDefault: true,
+//   }
 
 }

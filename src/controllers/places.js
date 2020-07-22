@@ -6,8 +6,8 @@ module.exports = {
     async index(request, response) {
 
         try {
-            const services = await connection('services').select('*')
-            return response.status(200).json(services)
+            const places = await connection('places').select('*')
+            return response.status(200).json(places)
         } catch (error) {
             return response.status(500).json({
                 error: error.message
@@ -17,18 +17,17 @@ module.exports = {
 
     async create(request, response) {
         try {
-            const { name, duration, value, description } = request.body
+            const { name, address, id_schedule } = request.body
 
-            const service = await connection('services').insert({
+            const places = await connection('places').insert({
                 name,
-                duration,
-                value,
-                description
+                address,
+                id_schedule
             })
 
-            if (service) {
+            if (places) {
                 return response.status(201).json({
-                    message: 'Serviço incluído com sucesso.'
+                    message: 'Unidade incluída com sucesso.'
                 })
             } else {
                 return response.status(400).json({ error: error })
