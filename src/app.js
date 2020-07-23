@@ -23,22 +23,22 @@ app.use('/userxservices', userxservices)
 app.use('/places', places)
 
 
-app.use((req, res, next) => {
-    //res.header('Acess-Control-Allow-Origin', '*') // Configurar para permitir apenas o servidor de prod
-    res.header("Access-Control-Allow-Origin", "https://salao-web.herokuapp.com");
-    //res.header('Acess-Control-Allow-Header','Origin, X-Requerested-with, Content-Type, Accept, Authorization')
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+// app.use((req, res, next) => {
+//     //res.header('Acess-Control-Allow-Origin', '*') // Configurar para permitir apenas o servidor de prod
+//     res.header("Access-Control-Allow-Origin", "https://salao-web.herokuapp.com");
+//     //res.header('Acess-Control-Allow-Header','Origin, X-Requerested-with, Content-Type, Accept, Authorization')
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
         
 
-    if (req.method === 'OPTIONS'){
-        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
-        return res.status(200).send({})
-    }
+//     if (req.method === 'OPTIONS'){
+//         res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
+//         return res.status(200).send({})
+//     }
 
-    next()
+//     next()
                
-})
+// })
 
 app.use((req, res, next) => {
     const erro = new Error('Not Found')
