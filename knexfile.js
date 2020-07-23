@@ -36,7 +36,7 @@ module.exports = {
 
   development: {
     client: 'mysql',
-    connection: process.env.CLEARDB_DATABASE_URL,
+    connection: 'mysql://bf868737566ef5:557e3fec@us-cdbr-east-02.cleardb.com/heroku_2578a9e036304ad?reconnect=true',
     pool: {
       min: 2,
       max: 10
