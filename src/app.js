@@ -10,7 +10,8 @@ const authenticate = require('./routes/auth')
 const user = require('./routes/user')
 const userxservices = require('./routes/userxservices')
 const places = require('./routes/place')
-const { route } = require('./routes/professional')
+const businessHours = require('./routes/businessHours')
+const dayOff = require('./routes/dayoff')
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -23,6 +24,8 @@ app.use('/professional', professional)
 app.use('/services', services)
 app.use('/userxservices', userxservices)
 app.use('/places', places)
+app.use('/businneshours', businessHours)
+app.use('/dayoff', dayOff)
 
 
 // app.use((req, res, next) => {

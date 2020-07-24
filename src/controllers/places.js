@@ -17,12 +17,11 @@ module.exports = {
 
     async create(request, response) {
         try {
-            const { name, address, id_schedule } = request.body
+            const { name, address } = request.body
 
             const places = await connection('places').insert({
                 name,
-                address,
-                id_schedule
+                address
             })
 
             if (places) {
@@ -42,13 +41,13 @@ module.exports = {
         try {
             const { id } = request.params
 
-            const service = await connection('services')
+            const places = await connection('places')
                 .where({ 'id': id })
                 .delete()
 
-            if (service) {
+            if (places) {
                 return response.status(201).json({
-                    message: 'Serviço deletado com sucesso.'
+                    message: 'Unidade excluída com sucesso.'
                 })
             } else {
                 return response.status(404).json({ error: 'Nenhum registro encontrado' })
@@ -63,19 +62,17 @@ module.exports = {
 
         try {
             const { id } = request.params
-            const { name, duration, value, description } = request.body
+            const { name, address } = request.body
 
-            const service = await connection('services').where('id', id)
+            const places = await connection('services').where('id', id)
                 .update({
                     name,
-                    duration,
-                    value,
-                    description
+                    address
                 })
 
-            if (service) {
+            if (places) {
                 return response.status(201).json({
-                    message: 'Serviço atualizado com sucesso.'
+                    message: 'Unidade atualizada com sucesso.'
                 })
             } else {
                 return response.status(404).json({ error: 'Nenhum registro encontrado' })

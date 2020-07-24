@@ -5,25 +5,26 @@ module.exports = {
 
     async index(request, response){
 
-        const professional = await connection('professionals')
+        const businessHours = await connection('businessHours')
         .select('*')
 
-        response.json(professional)
+        response.json(businessHours)
     },
     
     async create(request, response) {
         try {
-            const { name, urlImage, idPlaces } = request.body
+            const { day, openingTime, closedTime, idPlaces } = request.body
 
-            const professional = await connection('professionals').insert({
-                name,
-                urlImage,
+            const businessHours = await connection('businessHours').insert({
+                day,
+                openingTime,
+                closedTime,
                 idPlaces
             })
 
-            if (professional) {
+            if (businessHours) {
                 return response.status(201).json({
-                    message: 'Profissional incluído com sucesso.'
+                    message: 'Business Hours incluído com sucesso.'
                 })
             } else {
                 return response.status(400).json({ error: error })
@@ -38,13 +39,13 @@ module.exports = {
         try {
             const { id } = request.params
 
-            const professional = await connection('professionals')
+            const businessHours = await connection('businessHours')
                 .where({ 'id': id })
                 .delete()
 
-            if (professional) {
+            if (businessHours) {
                 return response.status(201).json({
-                    message: 'Professional excluído com sucesso.'
+                    message: 'Business Hours excluído com sucesso.'
                 })
             } else {
                 return response.status(404).json({ error: 'Nenhum registro encontrado' })
@@ -59,18 +60,19 @@ module.exports = {
 
         try {
             const { id } = request.params
-            const { name, urlImage, idPlaces } = request.body
+            const { day, openingTime, closedTime, idPlaces } = request.body
 
-            const service = await connection('professionals').where('id', id)
+            const businessHours = await connection('businessHours').where('id', id)
                 .update({
-                    name,
-                    urlImage,
+                    day,
+                    openingTime,
+                    closedTime,
                     idPlaces
                 })
 
-            if (service) {
+            if (businessHours) {
                 return response.status(201).json({
-                    message: 'Profissional atualizado com sucesso.'
+                    message: 'Business Hours atualizado com sucesso.'
                 })
             } else {
                 return response.status(404).json({ error: 'Nenhum registro encontrado' })

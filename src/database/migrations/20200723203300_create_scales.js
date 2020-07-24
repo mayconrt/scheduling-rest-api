@@ -1,9 +1,8 @@
 exports.up = function(knex) {
 
-    return knex.schema.createTable('places', function (table) {
+    return knex.schema.createTable('scales', function (table) {
         table.increments()
         table.string('name').notNullable();
-        table.string('address').notNullable();
 
       }).then((result) =>{
         return result
@@ -16,6 +15,6 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
 
-    return knex.schema.dropTable('places')
+    return knex.schema.dropTable('scales')
   
 };

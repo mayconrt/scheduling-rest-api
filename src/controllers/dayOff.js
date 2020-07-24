@@ -5,7 +5,7 @@ module.exports = {
 
     async index(request, response){
 
-        const professional = await connection('professionals')
+        const professional = await connection('professional')
         .select('*')
 
         response.json(professional)
@@ -13,17 +13,18 @@ module.exports = {
     
     async create(request, response) {
         try {
-            const { name, urlImage, idPlaces } = request.body
+            const { name, duration, value, description } = request.body
 
-            const professional = await connection('professionals').insert({
+            const service = await connection('services').insert({
                 name,
-                urlImage,
-                idPlaces
+                duration,
+                value,
+                description
             })
 
-            if (professional) {
+            if (service) {
                 return response.status(201).json({
-                    message: 'Profissional incluído com sucesso.'
+                    message: 'Serviço incluído com sucesso.'
                 })
             } else {
                 return response.status(400).json({ error: error })
@@ -38,13 +39,13 @@ module.exports = {
         try {
             const { id } = request.params
 
-            const professional = await connection('professionals')
+            const service = await connection('services')
                 .where({ 'id': id })
                 .delete()
 
-            if (professional) {
+            if (service) {
                 return response.status(201).json({
-                    message: 'Professional excluído com sucesso.'
+                    message: 'Serviço deletado com sucesso.'
                 })
             } else {
                 return response.status(404).json({ error: 'Nenhum registro encontrado' })
@@ -59,18 +60,19 @@ module.exports = {
 
         try {
             const { id } = request.params
-            const { name, urlImage, idPlaces } = request.body
+            const { name, duration, value, description } = request.body
 
-            const service = await connection('professionals').where('id', id)
+            const service = await connection('services').where('id', id)
                 .update({
                     name,
-                    urlImage,
-                    idPlaces
+                    duration,
+                    value,
+                    description
                 })
 
             if (service) {
                 return response.status(201).json({
-                    message: 'Profissional atualizado com sucesso.'
+                    message: 'Serviço atualizado com sucesso.'
                 })
             } else {
                 return response.status(404).json({ error: 'Nenhum registro encontrado' })
