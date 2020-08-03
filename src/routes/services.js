@@ -6,6 +6,7 @@ const authMiddleware = require('../middlewares/auth')
 //Routes Holerite User
 //router.use(authMiddleware)
 router.get('/', services.index)
+router.get('/:idPlaces', services.servicesPlaces)
 router.post('/', services.create)
 router.delete('/:id', services.delete)
 router.put('/:id', services.update)
