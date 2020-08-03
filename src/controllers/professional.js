@@ -10,6 +10,18 @@ module.exports = {
 
         response.json(professional)
     },
+
+    async professionalServices(request, response){
+
+        const { idServices } = request.params
+
+        const professional = await connection('professionalxservices')
+        .join('professionals', 'professionals.id', 'professionalxservices.idProfessional')
+        .where({ 'professionalxservices.idServices': idServices })
+        .select('professionals.id', 'professionals.name', 'professionals.urlImage')
+
+        response.json(professional)
+    },    
     
     async create(request, response) {
         try {
