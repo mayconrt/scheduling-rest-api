@@ -7,6 +7,10 @@ exports.up = function(knex) {
         table.double('value').notNullable();
         table.string('description').notNullable();
 
+        table.integer('idPlaces').notNullable();
+
+        table.foreign('idPlaces').references('id').inTable('places');
+
       }).then((result) =>{
         return result
     })

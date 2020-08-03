@@ -15,15 +15,32 @@ module.exports = {
         }
     },
 
+    async servicesPlaces(request, response) {
+
+        const { idPlaces } = request.params
+
+        try {
+            const services = await connection('services')
+            .where({ 'idPlaces': idPlaces })
+            .select('*')
+            return response.status(200).json(services)
+        } catch (error) {
+            return response.status(500).json({
+                error: error.message
+            })
+        }
+    },    
+
     async create(request, response) {
         try {
-            const { name, duration, value, description } = request.body
+            const { name, duration, value, description, idPlaces } = request.body
 
             const service = await connection('services').insert({
                 name,
                 duration,
                 value,
-                description
+                description,
+                idPlaces
             })
 
             if (service) {
