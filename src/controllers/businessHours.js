@@ -16,16 +16,16 @@ module.exports = {
             const { day, 
                     openingTime, 
                     closedTime,
-                    openingTime, 
-                    closedTime, 
+                    openingTimeCode, 
+                    closedTimeCode, 
                     idPlaces } = request.body
 
             const businessHours = await connection('businessHours').insert({
                 day, 
                 openingTime, 
                 closedTime,
-                openingTime, 
-                closedTime, 
+                openingTimeCode, 
+                closedTimeCode, 
                 idPlaces
             })
 
