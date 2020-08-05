@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const userxservices = require('../controllers/scale')
+const userxservices = require('../controllers/dayClosed')
 
 router.get('/', businessHours.index)
 router.post('/', businessHours.create)

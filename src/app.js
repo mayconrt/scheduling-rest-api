@@ -13,6 +13,9 @@ const profissionalxservices = require('./routes/professionlsxservices')
 const places = require('./routes/place')
 const businessHours = require('./routes/businessHours')
 const dayOff = require('./routes/dayoff')
+const scale = require('./routes/scale')
+const dayClosed = require('./routes/dayClosed')
+const schedule = require('./routes/schedule')
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -28,6 +31,9 @@ app.use('/profissionalxservices', profissionalxservices)
 app.use('/places', places)
 app.use('/businneshours', businessHours)
 app.use('/dayoff', dayOff)
+app.use('/scale', scale)
+app.use('/dayclosed', dayClosed)
+app.use('/schedule', schedule)
 
 
 // app.use((req, res, next) => {

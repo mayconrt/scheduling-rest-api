@@ -5,6 +5,10 @@ exports.up = function(knex) {
         table.string('day').notNullable();
         table.string('openingTime').notNullable();
         table.string('closedTime').notNullable();
+
+        table.integer('openingTimeCode').notNullable();
+        table.integer('closedTimeCode').notNullable();        
+
         table.integer('idPlaces').notNullable();
 
         table.foreign('idPlaces').references('id').inTable('places');
