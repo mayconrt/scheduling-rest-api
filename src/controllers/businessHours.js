@@ -13,12 +13,19 @@ module.exports = {
     
     async create(request, response) {
         try {
-            const { day, openingTime, closedTime, idPlaces } = request.body
+            const { day, 
+                    openingTime, 
+                    closedTime,
+                    openingTime, 
+                    closedTime, 
+                    idPlaces } = request.body
 
             const businessHours = await connection('businessHours').insert({
-                day,
-                openingTime,
+                day, 
+                openingTime, 
                 closedTime,
+                openingTime, 
+                closedTime, 
                 idPlaces
             })
 

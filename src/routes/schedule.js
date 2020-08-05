@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const userxservices = require('../controllers/professionalsxservices')
+const schedule = require('../controllers/schedule')
 
-router.get('/:id', userxservices.index)
-router.post('/', userxservices.create)
-router.delete('/:id', userxservices.delete)
+router.get('/:id', schedule.index)
+router.post('/', schedule.create)
+router.delete('/:id', schedule.delete)
 
 module.exports = router

@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const userxservices = require('../controllers/dayClosed')
+const dayClosed = require('../controllers/dayClosed')
 
-router.get('/', businessHours.index)
-router.post('/', businessHours.create)
-router.put('/:id', businessHours.update)
-router.delete('/:id', businessHours.delete)
+router.get('/', dayClosed.index)
+router.post('/', dayClosed.create)
+router.put('/:id', dayClosed.update)
+router.delete('/:id', dayClosed.delete)
 
 module.exports = router

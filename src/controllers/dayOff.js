@@ -5,26 +5,25 @@ module.exports = {
 
     async index(request, response){
 
-        const professional = await connection('professional')
+        const dayOff = await connection('dayOff')
         .select('*')
 
-        response.json(professional)
-    },
+        response.json(dayOff)
+    }, 
     
     async create(request, response) {
         try {
-            const { name, duration, value, description } = request.body
+            const { startDate, endDate, idProfessionals } = request.body
 
-            const service = await connection('services').insert({
-                name,
-                duration,
-                value,
-                description
+            const dayOff = await connection('dayOff').insert({
+                startDate, 
+                endDate, 
+                idProfessionals
             })
 
-            if (service) {
+            if (dayOff) {
                 return response.status(201).json({
-                    message: 'Serviço incluído com sucesso.'
+                    message: 'Profissional incluído com sucesso.'
                 })
             } else {
                 return response.status(400).json({ error: error })
@@ -39,13 +38,13 @@ module.exports = {
         try {
             const { id } = request.params
 
-            const service = await connection('services')
+            const dayOff = await connection('dayOff')
                 .where({ 'id': id })
                 .delete()
 
-            if (service) {
+            if (dayOff) {
                 return response.status(201).json({
-                    message: 'Serviço deletado com sucesso.'
+                    message: 'Professional excluído com sucesso.'
                 })
             } else {
                 return response.status(404).json({ error: 'Nenhum registro encontrado' })
@@ -60,19 +59,18 @@ module.exports = {
 
         try {
             const { id } = request.params
-            const { name, duration, value, description } = request.body
+            const { name, urlImage, idPlaces } = request.body
 
-            const service = await connection('services').where('id', id)
+            const service = await connection('professionals').where('id', id)
                 .update({
                     name,
-                    duration,
-                    value,
-                    description
+                    urlImage,
+                    idPlaces
                 })
 
             if (service) {
                 return response.status(201).json({
-                    message: 'Serviço atualizado com sucesso.'
+                    message: 'Profissional atualizado com sucesso.'
                 })
             } else {
                 return response.status(404).json({ error: 'Nenhum registro encontrado' })

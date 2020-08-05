@@ -6,8 +6,8 @@ module.exports = {
     async index(request, response) {
 
         try {
-            const places = await connection('places').select('*')
-            return response.status(200).json(places)
+            const scales = await connection('scales').select('*')
+            return response.status(200).json(scales)
         } catch (error) {
             return response.status(500).json({
                 error: error.message
@@ -17,14 +17,25 @@ module.exports = {
 
     async create(request, response) {
         try {
-            const { name, address } = request.body
+            const { day, 
+                    dayDescription, 
+                    startTime, 
+                    endTime,
+                    startTimeCode, 
+                    endTimeCode,
+                    idProfessionals } = request.body
 
-            const places = await connection('places').insert({
-                name,
-                address
+            const scales = await connection('scales').insert({
+                day, 
+                dayDescription, 
+                startTime, 
+                endTime,
+                startTimeCode, 
+                endTimeCode,
+                idProfessionals
             })
 
-            if (places) {
+            if (scales) {
                 return response.status(201).json({
                     message: 'Unidade incluída com sucesso.'
                 })
@@ -41,11 +52,11 @@ module.exports = {
         try {
             const { id } = request.params
 
-            const places = await connection('places')
+            const scales = await connection('scales')
                 .where({ 'id': id })
                 .delete()
 
-            if (places) {
+            if (scales) {
                 return response.status(201).json({
                     message: 'Unidade excluída com sucesso.'
                 })

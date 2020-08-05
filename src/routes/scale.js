@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const userxservices = require('../controllers/scale')
+const scale = require('../controllers/scale')
 
-router.get('/', businessHours.index)
-router.post('/', businessHours.create)
-router.put('/:id', businessHours.update)
-router.delete('/:id', businessHours.delete)
+router.get('/', scale.index)
+router.post('/', scale.create)
+router.put('/:id', scale.update)
+router.delete('/:id', scale.delete)
 
 module.exports = router
