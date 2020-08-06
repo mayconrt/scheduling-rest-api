@@ -17,13 +17,13 @@ module.exports = {
                 'professionalxservices.idServices': idServices,
                 'scales.day': day
              })
-             .andWhere(function(){
-                 this.where('scales.startTimeCode', '>=', startTimeCode)             
-             })
+            //  .andWhere(function(){
+            //      this.where('scales.startTimeCode', '>=', startTimeCode)             
+            //  })
 
-             .andWhere(function(){
-                this.where('scales.endTimeCode', '>=', endTimeCode)               
-            })             
+            //  .andWhere(function(){
+            //     this.where('scales.endTimeCode', '>=', endTimeCode)               
+            // })             
 
             // .whereNotExists(function() {
             //     this.select('*').from('schedules')
