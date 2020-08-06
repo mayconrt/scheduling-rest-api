@@ -25,20 +25,20 @@ module.exports = {
                 this.where('scales.endTimeCode', '>=', endTimeCode)               
             })             
 
-            .whereNotExists(function() {
-                this.select('*').from('schedules')
-                .whereRaw('schedules.idProfessionals = professionals.id')
-                .andWhere(function(){
-                    this.where('schedules.endTimeCode', '<=', endTimeCode)               
-                })
-                .andWhere(function(){
-                    this.where('schedules.endTimeCode', '>=', endTimeCode)               
-                })
-                .andWhere(function(){
-                    this.where('schedules.date', '=', date)               
-                })                
+            // .whereNotExists(function() {
+            //     this.select('*').from('schedules')
+            //     .whereRaw('schedules.idProfessionals = professionals.id')
+            //     .andWhere(function(){
+            //         this.where('schedules.endTimeCode', '<=', endTimeCode)               
+            //     })
+            //     .andWhere(function(){
+            //         this.where('schedules.endTimeCode', '>=', endTimeCode)               
+            //     })
+            //     .andWhere(function(){
+            //         this.where('schedules.date', '=', date)               
+            //     })                
                 
-              })
+            //   })
 
             .select('professionals.id', 'professionals.name')
 
