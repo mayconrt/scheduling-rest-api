@@ -21,14 +21,16 @@ module.exports = {
                     idServices, 
                     idProfessionals, 
                     startTimeCode,
-                    endTimeCode } = request.body
+                    endTimeCode, 
+                    date} = request.body
 
             const schedules = await connection('schedules').insert({
                 idUsers, 
                 idServices, 
                 idProfessionals, 
                 startTimeCode,
-                endTimeCode
+                endTimeCode,
+                date
             })
 
             if (schedules) {

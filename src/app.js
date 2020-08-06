@@ -16,6 +16,7 @@ const dayOff = require('./routes/dayoff')
 const scale = require('./routes/scale')
 const dayClosed = require('./routes/dayClosed')
 const schedule = require('./routes/schedule')
+const freeHours = require('./routes/freeHours')
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -34,6 +35,7 @@ app.use('/dayoff', dayOff)
 app.use('/scale', scale)
 app.use('/dayclosed', dayClosed)
 app.use('/schedule', schedule)
+app.use('/freehours', freeHours)
 
 
 // app.use((req, res, next) => {
