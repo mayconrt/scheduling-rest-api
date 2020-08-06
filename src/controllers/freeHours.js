@@ -35,7 +35,7 @@ module.exports = {
                     this.where('schedules.endTimeCode', '>=', endTimeCode)               
                 })
                 .andWhere(function(){
-                    this.where('scales.date', '=', date)               
+                    this.where('schedules.date', '=', date)               
                 })                
                 
               })
